@@ -1,3 +1,6 @@
+import "./App.css";
+import ImagePanelLayout from "./components/ImageUpload/ImagePanelLayout";
+
 export function App() {
-  return <div>Your code starts here</div>;
+  return <ImagePanelLayout />;
 }

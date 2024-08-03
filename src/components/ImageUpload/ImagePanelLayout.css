@@ -1,0 +1,26 @@
+.container {
+  width: 433px;
+  height: 792px;
+  background-color: #f5f9fa;
+  border-radius: 8px;
+  margin-right: 135px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.navbar {
+  width: 100%;
+  height: 56px;
+  border-radius: 8px 8px 0 0;
+  background-color: #ecf0f3;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.circle {
+  width: 24px;
+  height: 24px;
+  background-color: #ddd;
+  border-radius: 50%;
+}
