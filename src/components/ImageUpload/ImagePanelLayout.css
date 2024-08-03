@@ -24,3 +24,9 @@
   background-color: #ddd;
   border-radius: 50%;
 }
+
+.control-container {
+  display: flex;
+  justify-content: center;
+  padding: 38px;
+}
