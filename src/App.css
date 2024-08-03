@@ -1,3 +1,7 @@
 body {
   padding: 16px;
 }
+
+.app-container {
+  display: inline-flex;
+}
