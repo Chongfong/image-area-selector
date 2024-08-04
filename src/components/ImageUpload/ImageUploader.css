@@ -16,3 +16,16 @@
   color: #777;
   text-align: center;
 }
+
+.error-message {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
+  color: rgb(255 4 4 / 50%);
+}
+
+.uploaded-image {
+  max-width: 100%;
+}
