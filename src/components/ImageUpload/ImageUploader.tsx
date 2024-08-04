@@ -1,21 +1,26 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import "./ImageUploader.css";
 
-const ImageUploader: React.FC = () => {
-  const [image, setImage] = useState<string | null>(null);
+interface ImageUploaderProps {
+  onImageLoad: (image: string | null) => void;
+}
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
-      const reader = new FileReader();
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        setImage(e.target?.result as string);
-      };
+const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageLoad }) => {
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      if (acceptedFiles.length > 0) {
+        const file = acceptedFiles[0];
+        const reader = new FileReader();
+        reader.onload = (e: ProgressEvent<FileReader>) => {
+          onImageLoad(e.target?.result as string);
+        };
 
-      reader.readAsDataURL(file);
-    }
-  }, []);
+        reader.readAsDataURL(file);
+      }
+    },
+    [onImageLoad],
+  );
 
   const { getRootProps, getInputProps, fileRejections } = useDropzone({
     onDrop,
@@ -31,15 +36,11 @@ const ImageUploader: React.FC = () => {
 
   return (
     <div>
-      {!image ? (
-        <div {...getRootProps()} className="dropzone-area">
-          <input {...getInputProps()} />
-          <p className="upload-text">Upload image</p>
-          {Object.keys(fileRejections).length > 0 && fileRejectionItems}
-        </div>
-      ) : (
-        <img src={image} alt="Uploaded" className="uploaded-image" />
-      )}
+      <div {...getRootProps()} className="dropzone-area">
+        <input {...getInputProps()} />
+        <p className="upload-text">Upload image</p>
+        {Object.keys(fileRejections).length > 0 && fileRejectionItems}
+      </div>
     </div>
   );
 };
