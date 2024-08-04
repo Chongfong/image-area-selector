@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { Block } from "../common/block";
 import "./ImagePanelLayout.css";
 import ImageUploader from "./ImageUploader";
 import ImageAreaSelector from "./ImageAreaSelector";
 
-const ImagePanelLayout: React.FC = () => {
+interface ImagePanelLayoutProps {
+  blocks: Block[];
+  setBlocks: React.Dispatch<React.SetStateAction<Block[]>>;
+}
+
+const ImagePanelLayout: React.FC<ImagePanelLayoutProps> = ({
+  blocks,
+  setBlocks,
+}) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   return (
@@ -13,7 +22,11 @@ const ImagePanelLayout: React.FC = () => {
       </div>
       <div className="control-container">
         {imageSrc ? (
-          <ImageAreaSelector imageSrc={imageSrc} />
+          <ImageAreaSelector
+            imageSrc={imageSrc}
+            blocks={blocks}
+            setBlocks={setBlocks}
+          />
         ) : (
           <ImageUploader onImageLoad={setImageSrc} />
         )}

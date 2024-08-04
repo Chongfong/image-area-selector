@@ -1,19 +1,12 @@
 import React, { useState, useRef, MouseEvent } from "react";
 import { Rnd } from "react-rnd";
+import { Block } from "../common/block";
 import "./ImageAreaSelector.css";
-
-interface Block {
-  id: number;
-  startX: number;
-  startY: number;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
 
 interface ImageAreaSelectorProps {
   imageSrc: string | null;
+  blocks: Block[];
+  setBlocks: React.Dispatch<React.SetStateAction<Block[]>>;
 }
 
 interface detectCollisionProps {
@@ -42,8 +35,11 @@ interface handleResizeStopProps {
   position: { x: number; y: number };
 }
 
-const ImageAreaSelector: React.FC<ImageAreaSelectorProps> = ({ imageSrc }) => {
-  const [blocks, setBlocks] = useState<Block[]>([]);
+const ImageAreaSelector: React.FC<ImageAreaSelectorProps> = ({
+  imageSrc,
+  blocks,
+  setBlocks,
+}) => {
   const draggingRef = useRef<boolean | null>(null);
   const [creating, setCreating] = useState<boolean>(false);
   const [newBlock, setNewBlock] = useState<Block | null>(null);
