@@ -87,21 +87,29 @@ const ImageAreaSelector: React.FC<ImageAreaSelectorProps> = ({
     const currentX = e.clientX - rect.left;
     const currentY = e.clientY - rect.top;
 
-    const width = Math.min(
-      Math.abs(currentX - newBlock.startX),
-      rect.width - newBlock.startX,
+    const startX = Math.max(0, Math.min(newBlock.startX, rect.width));
+    const startY = Math.max(0, Math.min(newBlock.startY, rect.height));
+
+    const width = Math.max(
+      0,
+      Math.min(rect.width, Math.abs(currentX - startX)),
     );
-    const height = Math.min(
-      Math.abs(currentY - newBlock.startY),
-      rect.height - newBlock.startY,
+    const height = Math.max(
+      0,
+      Math.min(rect.height, Math.abs(currentY - startY)),
     );
 
-    const x = Math.min(newBlock.startX, Math.max(0, currentX));
-    const y = Math.min(newBlock.startY, Math.max(0, currentY));
+    const x = Math.max(
+      0,
+      Math.min(rect.width - width, Math.min(startX, currentX)),
+    );
+    const y = Math.max(
+      0,
+      Math.min(rect.height - height, Math.min(startY, currentY)),
+    );
 
     setNewBlock({ ...newBlock, x, y, width, height });
   };
-
   const handleMouseUp = (): void => {
     if (!creating || !newBlock) return;
     setCreating(false);
