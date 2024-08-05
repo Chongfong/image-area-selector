@@ -2,6 +2,7 @@ import React, { useState, useRef, MouseEvent } from "react";
 import { Rnd } from "react-rnd";
 import { Block } from "../common/block";
 import "./ImageAreaSelector.css";
+import { DeleteIcon } from "../common/DeleteIcon";
 
 interface ImageAreaSelectorProps {
   imageSrc: string | null;
@@ -200,7 +201,7 @@ const ImageAreaSelector: React.FC<ImageAreaSelectorProps> = ({
                     className="block-delete"
                     onClick={() => deleteBlock(block.id)}
                   >
-                    ×
+                    <DeleteIcon size={20} color="gray" />
                   </button>
                 </div>
               </Rnd>

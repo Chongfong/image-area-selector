@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import "./ImageUploader.css";
+import { ImageIcon } from "../common/ImageIcon";
 
 interface ImageUploaderProps {
   onImageLoad: (image: string | null) => void;
@@ -38,6 +39,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageLoad }) => {
     <div>
       <div {...getRootProps()} className="dropzone-area">
         <input {...getInputProps()} />
+        <ImageIcon />
         <p className="upload-text">Upload image</p>
         {Object.keys(fileRejections).length > 0 && fileRejectionItems}
       </div>

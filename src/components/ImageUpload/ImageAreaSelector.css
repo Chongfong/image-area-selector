@@ -19,30 +19,29 @@
 
 .block-index {
   position: absolute;
-  top: 0;
-  left: 0;
-  color: white;
-  border: black solid 1px;
+  top: 4px;
+  left: 4px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   text-align: center;
-  line-height: 20px;
+  line-height: 16px;
+  font-size: small;
 }
 
 .block-delete {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -24px;
   cursor: pointer;
-  background-color: red;
-  color: white;
+  background-color: #ecf0f3;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   width: 20px;
   height: 20px;
-  text-align: center;
-  line-height: 20px;
+  padding: 0;
 }
 
 .new-block {
