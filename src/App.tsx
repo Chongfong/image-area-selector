@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Block } from "./components/common/block";
+import { Block } from "./utils/blockUtils";
 import "./App.css";
 import ImagePanelLayout from "./components/ImageUpload/ImagePanelLayout";
 import DataPreviewLayout from "./components/DataPreview/DataPreviewLayout";

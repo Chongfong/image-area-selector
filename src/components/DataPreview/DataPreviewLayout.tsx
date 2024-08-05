@@ -1,6 +1,6 @@
 import React from "react";
 import "./DataPreviewLayout.css";
-import { Block } from "../common/block";
+import { Block } from "../../utils/blockUtils";
 
 interface DataPreviewLayoutProps {
   blocks: Block[];

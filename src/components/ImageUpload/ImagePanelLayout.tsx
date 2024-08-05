@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Block } from "../common/block";
+import { Block } from "../../utils/blockUtils";
 import "./ImagePanelLayout.css";
 import ImageUploader from "./ImageUploader";
 import ImageAreaSelector from "./ImageAreaSelector";
