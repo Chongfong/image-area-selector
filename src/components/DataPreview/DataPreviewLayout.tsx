@@ -11,7 +11,7 @@ const DataPreviewLayout: React.FC<DataPreviewLayoutProps> = ({ blocks }) => {
 
   return (
     <div className="data-preview-container">
-      <pre className="detail">{jsonString}</pre>
+      {blocks.length > 0 && <pre className="detail">{jsonString}</pre>}
     </div>
   );
 };
