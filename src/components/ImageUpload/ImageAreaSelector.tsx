@@ -85,10 +85,18 @@ const ImageAreaSelector: React.FC<ImageAreaSelectorProps> = ({
     const rect = previewRef.current.getBoundingClientRect();
     const currentX = e.clientX - rect.left;
     const currentY = e.clientY - rect.top;
-    const width = Math.abs(currentX - newBlock.startX);
-    const height = Math.abs(currentY - newBlock.startY);
-    const x = Math.min(newBlock.startX, currentX);
-    const y = Math.min(newBlock.startY, currentY);
+
+    const width = Math.min(
+      Math.abs(currentX - newBlock.startX),
+      rect.width - newBlock.startX,
+    );
+    const height = Math.min(
+      Math.abs(currentY - newBlock.startY),
+      rect.height - newBlock.startY,
+    );
+
+    const x = Math.min(newBlock.startX, Math.max(0, currentX));
+    const y = Math.min(newBlock.startY, Math.max(0, currentY));
 
     setNewBlock({ ...newBlock, x, y, width, height });
   };
